@@ -1,0 +1,1484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-02-02 六 14:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>org tutorial</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sunkehui" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../../../index.html"> UP </a>
+ |
+ <a accesskey="H" href=""> HOME </a>
+</div><div id="content">
+<h1 class="title">org tutorial</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdb2f778">1. intro</a></li>
+<li><a href="#org5c8eaab">2. Editting</a>
+<ul>
+<li><a href="#org9fee2b7">2.1. outline</a></li>
+<li><a href="#org71dbc4b">2.2. Headlines</a></li>
+<li><a href="#org6a8473b">2.3. Visibility Cycling</a></li>
+<li><a href="#orgc59111e">2.4. Structure Editting</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgabb86d4">2.4.0.1. M-RET (org-meta-return)</a></li>
+<li><a href="#org0c48b65">2.4.0.2. M-LEFT (org-do-promote)</a></li>
+<li><a href="#org6932f4d">2.4.0.3. M-RIGHT (org-do-demote)</a></li>
+<li><a href="#org1f94543">2.4.0.4. M-S-LEFT (org-promote-subtree) M-S-RIGHT (org-demote-subtree)</a></li>
+<li><a href="#org9b2eb79">2.4.0.5. M-UP (org-move-subtree-up) M-DOWN (org-move-subtree-down)</a></li>
+<li><a href="#orgc73918b">2.4.0.6. C-c @ (org-mark-subtree)</a></li>
+<li><a href="#org43ea226">2.4.0.7. C-c C-x C-w (org-cut-subtree)</a></li>
+<li><a href="#org0c2a3bd">2.4.0.8. C-c C-x M-w (org-copy-subtree)</a></li>
+<li><a href="#orga021fcb">2.4.0.9. C-c C-x C-y (org-paste-subtree)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgaba2fe9">2.5. Plain List</a></li>
+<li><a href="#org2215580">2.6. Drawwer 抽屉</a></li>
+<li><a href="#org5907e8b">2.7. Block</a></li>
+<li><a href="#orgd29f651">2.8. FootNote</a></li>
+</ul>
+</li>
+<li><a href="#orga2268de">3. Table</a></li>
+<li><a href="#org985e541">4. Hyperlinks</a>
+<ul>
+<li><a href="#orgf5fce99">4.1. internal link</a></li>
+<li><a href="#orgdb4d03a">4.2. external link</a></li>
+</ul>
+</li>
+<li><a href="#org12eb835">5. Markup for Rich Contents</a>
+<ul>
+<li><a href="#org74287af">5.1. Paragraphs</a></li>
+<li><a href="#org62fd038">5.2. Emphasis and Monospace强调</a></li>
+<li><a href="#orge6c0457">5.3. 下标和上标</a></li>
+<li><a href="#orgf16770b">5.4. 符号</a></li>
+<li><a href="#orgb425d4c">5.5. embbed  LaTeX</a>
+<ul>
+<li><a href="#orge1b9ac8">5.5.1. LaTeX fragments</a></li>
+</ul>
+</li>
+<li><a href="#orgf65077e">5.6. Literal Examples</a></li>
+<li><a href="#orga6417c6">5.7. image</a></li>
+</ul>
+</li>
+<li><a href="#org4b7994d">6. Working with Source Code</a>
+<ul>
+<li><a href="#org7198c0d">6.1. code block structure</a>
+<ul>
+<li><a href="#org9957f61">6.1.1. header argument</a>
+<ul>
+<li><a href="#org3dc3fc1">6.1.1.1. 系统级参数</a></li>
+<li><a href="#org0bb71eb">6.1.1.2. buffer org 参数</a></li>
+<li><a href="#org913b93e">6.1.1.3. code block的环境</a></li>
+<li><a href="#orgbeb7a42">6.1.1.4. evaluating src block</a></li>
+<li><a href="#orgb14c755">6.1.1.5. result of evaluating</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgaa25673">7. Export</a>
+<ul>
+<li><a href="#org93e3553">7.1. The Export Dispatcher</a></li>
+<li><a href="#orgcedc0ef">7.2. Export setting</a></li>
+<li><a href="#orgdc91f61">7.3. Table of content (TOC)</a></li>
+<li><a href="#org43ad2d2">7.4. include</a></li>
+<li><a href="#org94e05d7">7.5. HTML setting</a>
+<ul>
+<li><a href="#org3055841">7.5.1. HTML<sub>MATHJAX</sub></a></li>
+<li><a href="#org1f90ed3">7.5.2. ‘HTML<sub>LINK</sub><sub>HOME</sub>’</a></li>
+<li><a href="#orgdaddcfd">7.5.3. ‘HTML<sub>LINK</sub><sub>UP</sub>’</a></li>
+<li><a href="#orgaf033e7">7.5.4. CSS</a></li>
+<li><a href="#org991557f">7.5.5. js support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org2df67d0">8. publish</a></li>
+<li><a href="#org04f7423">9. Bebal</a></li>
+<li><a href="#orgf4abb24">10. plantuml</a></li>
+<li><a href="#orgd4c3e70">11. ref</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgdb2f778" class="outline-2">
+<h2 id="orgdb2f778"><span class="section-number-2">1</span> intro</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+本文以功能模块的形式介绍org-mode
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5c8eaab" class="outline-2">
+<h2 id="org5c8eaab"><span class="section-number-2">2</span> Editting</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org9fee2b7" class="outline-3">
+<h3 id="org9fee2b7"><span class="section-number-3">2.1</span> outline</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+org mode 是基于 Outline mode
+</p>
+</div>
+</div>
+
+<div id="outline-container-org71dbc4b" class="outline-3">
+<h3 id="org71dbc4b"><span class="section-number-3">2.2</span> Headlines</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+outline 第一个功能就是 Headlines， 也就是 “*” "<b><b>" "<b>*</b></b></b>" 这样的标题分级。 在youdao markdown
+中使用的是"#"
+</p>
+</div>
+</div>
+<div id="outline-container-org6a8473b" class="outline-3">
+<h3 id="org6a8473b"><span class="section-number-3">2.3</span> Visibility Cycling</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+这就是说，每一节的可见性是一个圈，通过那行首，按Tab， 可以切换可视性。
+以下是快捷键和函数。
+TAB (org-cycle)
+（org-global-cycle) 全局切换
+(outline-show-all) 全部展开
+(org-copy-visible) 把当前可见的内容拷贝
+(outline-show-children) 把当前节点的子节点显示出来
+(outline-show-subtree)把当前节点的所有子树显示出来
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc59111e" class="outline-3">
+<h3 id="orgc59111e"><span class="section-number-3">2.4</span> Structure Editting</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+结构编辑，这个功能就是提供了一个结构编辑的快捷键
+</p>
+
+<p>
+以下几个都是配合M键和方向键或者shift键的操作，都很实用
+</p>
+</div>
+<div id="outline-container-orgabb86d4" class="outline-5">
+<h5 id="orgabb86d4"><span class="section-number-5">2.4.0.1</span> M-RET (org-meta-return)</h5>
+<div class="outline-text-5" id="text-2-4-0-1">
+<p>
+这个很好用，就是快速的加一个Headline
+</p>
+</div>
+</div>
+<div id="outline-container-org0c48b65" class="outline-5">
+<h5 id="org0c48b65"><span class="section-number-5">2.4.0.2</span> M-LEFT (org-do-promote)</h5>
+<div class="outline-text-5" id="text-2-4-0-2">
+<p>
+把当前Headline提升一个等级
+</p>
+</div>
+</div>
+<div id="outline-container-org6932f4d" class="outline-5">
+<h5 id="org6932f4d"><span class="section-number-5">2.4.0.3</span> M-RIGHT (org-do-demote)</h5>
+<div class="outline-text-5" id="text-2-4-0-3">
+<p>
+把当前Headline降低一个等级
+</p>
+</div>
+</div>
+<div id="outline-container-org1f94543" class="outline-5">
+<h5 id="org1f94543"><span class="section-number-5">2.4.0.4</span> M-S-LEFT (org-promote-subtree) M-S-RIGHT (org-demote-subtree)</h5>
+<div class="outline-text-5" id="text-2-4-0-4">
+<p>
+调整整个子树的等级
+</p>
+</div>
+</div>
+<div id="outline-container-org9b2eb79" class="outline-5">
+<h5 id="org9b2eb79"><span class="section-number-5">2.4.0.5</span> M-UP (org-move-subtree-up) M-DOWN (org-move-subtree-down)</h5>
+<div class="outline-text-5" id="text-2-4-0-5">
+<p>
+调整子树顺序
+</p>
+
+<p>
+以下几个是对子树的选择复制和粘贴
+</p>
+</div>
+</div>
+<div id="outline-container-orgc73918b" class="outline-5">
+<h5 id="orgc73918b"><span class="section-number-5">2.4.0.6</span> C-c @ (org-mark-subtree)</h5>
+</div>
+<div id="outline-container-org43ea226" class="outline-5">
+<h5 id="org43ea226"><span class="section-number-5">2.4.0.7</span> C-c C-x C-w (org-cut-subtree)</h5>
+</div>
+<div id="outline-container-org0c2a3bd" class="outline-5">
+<h5 id="org0c2a3bd"><span class="section-number-5">2.4.0.8</span> C-c C-x M-w (org-copy-subtree)</h5>
+</div>
+<div id="outline-container-orga021fcb" class="outline-5">
+<h5 id="orga021fcb"><span class="section-number-5">2.4.0.9</span> C-c C-x C-y (org-paste-subtree)</h5>
+</div>
+</div>
+
+<div id="outline-container-orgaba2fe9" class="outline-3">
+<h3 id="orgaba2fe9"><span class="section-number-3">2.5</span> Plain List</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+三个类型的List
+</p>
+<ul class="org-ul">
+<li>undordered list   以"-" "+" 或者"*"开头，受markdown影响，使用"-"就可以</li>
+<li>orderered list  以 "1." 或者"1)" 受markdown影响使用1.</li>
+<li>Description list ,属于unorder list 以‘::’ 分隔描述项和描述</li>
+</ul>
+
+<p>
+描述项示例
+</p>
+<dl class="org-dl">
+<dt>Elijah Wood</dt><dd>He plays Frodo</dd>
+<dt>Sean Astin</dt><dd>He plays Sam, Frodo's friend. I still remember him</dd>
+</dl>
+
+
+<p>
+对headline的一切操作都适用于列表
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2215580" class="outline-3">
+<h3 id="org2215580"><span class="section-number-3">2.6</span> Drawwer 抽屉</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Still outside the drawer
+</p>
+<p>
+This is inside the drawer.
+</p>
+<p>
+After the drawer.
+</p>
+
+<p>
+这玩意也就是在org mode里可以用 在markdown 和html里都没有用。
+就是快速定义了一个可以收起的内容。 内容的标题可以自己定义。
+DRAWERNAME 可以随便起 ， 在DRAWERNAME上TAB可以收起内容
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org5907e8b" class="outline-3">
+<h3 id="org5907e8b"><span class="section-number-3">2.7</span> Block</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+使用 ‘#+BEGIN’ … ‘#+END’  定义一段block
+</p>
+
+<pre class="example">
+Some example from a text file.
+</pre>
+<p>
+org block type 总共有以下几种
+</p>
+<ul class="org-ul">
+<li>“center”</li>
+<li>“comment”</li>
+<li>“dynamic”</li>
+<li>“example”</li>
+<li>“export”</li>
+<li>“quote”</li>
+<li>“special”</li>
+<li>“verse”</li>
+<li>"src"</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgd29f651" class="outline-3">
+<h3 id="orgd29f651"><span class="section-number-3">2.8</span> FootNote</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+注脚，感觉这个也很有用.
+</p>
+
+<p>
+The Org homepage<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> now looks a lot better than it used to.
+</p>
+
+<p>
+在markdown 和html里都有用。
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orga2268de" class="outline-2">
+<h2 id="orga2268de"><span class="section-number-2">3</span> Table</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+等我有时间了看，现在最要紧的是解决 有道云笔记没法插图的问题
+</p>
+</div>
+</div>
+<div id="outline-container-org985e541" class="outline-2">
+<h2 id="org985e541"><span class="section-number-2">4</span> Hyperlinks</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+添加一个link, 是执行C-c C-l runs the command org-insert-link。
+它会让你选择协议，选择描述。 完成后，link就只显示描述，想要编辑link，光标放到上面，再运行C-c C-l就可以了。
+<a href="org-mode.html">alinkexample</a>
+</p>
+</div>
+
+<div id="outline-container-orgf5fce99" class="outline-3">
+<h3 id="orgf5fce99"><span class="section-number-3">4.1</span> internal link</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+首先定义一个target 是使用"&lt;&lt;mytarget &gt;&gt;"  引用就是通过 "[[][]]"语法，里面第一个播放是target名，第二个是描述。
+</p>
+
+<p>
+我这里是一个taget<a id="orgecbb1db"></a>
+</p>
+
+
+
+<p>
+然后这里引用连接<a href="#orgecbb1db">fisttargetdist</a>
+</p>
+
+<p>
+在org mode里可以通过 C-c C-o 跳到目标
+</p>
+
+
+<ol class="org-ol">
+<li>one item</li>
+<li><a id="orga03af1f"></a>another item</li>
+</ol>
+<p>
+Here we refer to item <a href="#orga03af1f">2</a>.
+</p>
+
+<p>
+如果Link写的是headline 可以直接跳转，不必定义target
+<a href="#org5907e8b">2.7</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdb4d03a" class="outline-3">
+<h3 id="orgdb4d03a"><span class="section-number-3">4.2</span> external link</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+<a href="https://orgmode.org/manual/External-Links.html#External-Links">gun external link</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org12eb835" class="outline-2">
+<h2 id="org12eb835"><span class="section-number-2">5</span> Markup for Rich Contents</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org74287af" class="outline-3">
+<h3 id="org74287af"><span class="section-number-3">5.1</span> Paragraphs</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+BEGIN<sub>VERSE</sub> END<sub>VERSE</sub>  verse的意思是诗文， 在这个块下，你怎么写的它就怎么显示.
+</p>
+<p class="verse">
+Great clouds overhead<br />
+Tiny black birds rise and fall<br />
+Snow covers Emacs<br />
+<br />
+&#xa0;&#xa0;&#xa0;&#x2014;AlexSchroeder<br />
+</p>
+
+<p>
+BEGIN<sub>QUOTE</sub> END<sub>QUOTE</sub> 引言引用 ， 一般在引用名人名言时使用。 它会将&#x2014;以前的都放在一行。
+</p>
+<blockquote>
+<p>
+Great clouds overhead
+Tiny black birds rise and fall
+Snow covers Emacs
+</p>
+
+<p>
+&#x2014;AlexSchroeder
+</p>
+
+<p>
+Everything should be made as simple as possible,
+but not any simpler &#x2014;Albert Einstein
+</p>
+</blockquote>
+
+<p>
+BEGIN<sub>CENTER</sub> END<sub>CENTER</sub> 居中引用，在块里使用\\是强制换行
+</p>
+<div class="org-center">
+<p>
+Everything should be made as simple as possible, <br />
+but not any simpler
+</p>
+</div>
+
+<p>
+BEGIN<sub>EXAMPLE</sub> 也是比较常用的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org62fd038" class="outline-3">
+<h3 id="org62fd038"><span class="section-number-3">5.2</span> Emphasis and Monospace强调</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+‘*bold*’, ‘/italic/’, ‘<sub>underlined</sub>_’, ‘=verbatim=’ and ‘~code~’,
+<b>bold</b>
+<i>italic</i>
+<span class="underline">下划线</span>
+</p>
+
+<p>
+<code>淡化</code>
+</p>
+
+<p>
+<code>&lt;php? echo "hello world"&gt;?</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orge6c0457" class="outline-3">
+<h3 id="orge6c0457"><span class="section-number-3">5.3</span> 下标和上标</h3>
+<div class="outline-text-3" id="text-5-3">
+<pre class="example">
+adius of the sun is R_sun = 6.96 x 10^8 m.  On the other hand,
+the radius of Alpha Centauri is R_{Alpha Centauri} = 1.28 x R_{sun}.
+~
+</pre>
+
+<p>
+The radius of the sun is R<sub>sun</sub> = 6.96 x 10<sup>8</sup> m.  On the other hand,
+the radius of Alpha Centauri is R<sub>Alpha Centauri</sub> = 1.28 x R<sub>sun</sub>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf16770b" class="outline-3">
+<h3 id="orgf16770b"><span class="section-number-3">5.4</span> 符号</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+使用类LaTeX-like syntax ， 以\开头 org-entities-help 可以查到所有的符号
+</p>
+
+<p>
+箭头 &rarr;
+</p>
+
+<p>
+Pro tip: Given a circle &Gamma; of diameter d, the length of its
+circumference is &pi;d.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb425d4c" class="outline-3">
+<h3 id="orgb425d4c"><span class="section-number-3">5.5</span> embbed  LaTeX</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+LaTex 是基于Tex 的宏库。
+</p>
+</div>
+<div id="outline-container-orge1b9ac8" class="outline-4">
+<h4 id="orge1b9ac8"><span class="section-number-4">5.5.1</span> LaTeX fragments</h4>
+<div class="outline-text-4" id="text-5-5-1">
+<p>
+安装Latex
+</p>
+
+<p>
+千万用apt get 装 太老了
+sudo apt-get install texlive-full
+sudo apt-get install texmaker
+更严重的问题是导出pdf也有问题，经查是因为apt安装的Tex live太老了是2015 现在都 2018了。
+<a href="https://www.tug.org/texlive/">texlive</a>  /usr/local/texlive/2018
+</p>
+
+
+
+<p>
+这个片段，当导出成LaTex 保持不变，当导出成HTML的时候，它可以被弄成图片，或者 通过 <a href="https://www.mathjax.org/">MathJax </a> 一个jsy加导成svg
+</p>
+
+<p>
+\begin{equation}                        % arbitrary environments,
+x=\sqrt{b}                              % even tables, figures
+\end{equation}                          % etc
+</p>
+
+<p>
+If \(a^2=b\) and \( b=2 \), then the solution must be
+either \[ a=+\sqrt{2} \] or \[ a=-\sqrt{2} \].
+</p>
+
+<p>
+测试发现在html中有效，它引用了一些js库来显示LaTex 公式， 在markdown中无效。
+</p>
+
+<p>
+org-preview-latex-default-process 变量设置了图片转换工具,它可能是 ‘dvipng’, ‘dvisvgm’ or ‘convert’ 之一。
+ <a href="http://sourceforge.net/projects/dvipng/">http://sourceforge.net/projects/dvipng/</a>, <a href="http://dvisvgm.bplaced.net/">http://dvisvgm.bplaced.net/</a>
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div id="outline-container-orgf65077e" class="outline-3">
+<h3 id="orgf65077e"><span class="section-number-3">5.6</span> Literal Examples</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+这节讲的就是如果你的文档里是示例，或者代码示例，你就需要一个单独的空间，在这个空间里的输入不走org解释器，如果
+是指定了语言，还可以按照emacs在那个语言下的显示颜色和风格来显示代码， 不指定语言就使用BEGIN<sub>EXAMPLE</sub>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #4d4d4c;">(</span><span style="color: #718c00;">defun</span> <span style="color: #f5871f;">org-xor</span> <span style="color: #3e999f;">(</span>a b<span style="color: #3e999f;">)</span>
+  <span style="color: #8959a8;">"Exclusive or."</span>
+  <span style="color: #3e999f;">(</span><span style="color: #718c00;">if</span> a <span style="color: #eab700;">(</span>not b<span style="color: #eab700;">)</span> b<span style="color: #3e999f;">)</span><span style="color: #4d4d4c;">)</span>
+</pre>
+</div>
+<p>
+测试结果，html 很好， markdown 不能显示代码颜色。
+</p>
+
+<p>
+可以给代码显示行号
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="linenr">20: </span><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">This exports with line number 20.</span>
+<span class="linenr">21: </span><span style="color: #4d4d4c;">(</span>message <span style="color: #3e999f;">"This is line 21"</span><span style="color: #4d4d4c;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="linenr">31: </span><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">This is listed as line 31.</span>
+<span class="linenr">32: </span><span style="color: #4d4d4c;">(</span>message <span style="color: #3e999f;">"This is line 32"</span><span style="color: #4d4d4c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga6417c6" class="outline-3">
+<h3 id="orga6417c6"><span class="section-number-3">5.7</span> image</h3>
+<div class="outline-text-3" id="text-5-7">
+
+<div class="figure">
+<p><img src="./a.png" alt="a.png" />
+</p>
+</div>
+
+<p>
+org-toggle-inline-image 可以直接在org buffer里显示图片
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b7994d" class="outline-2">
+<h2 id="org4b7994d"><span class="section-number-2">6</span> Working with Source Code</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+首先 org block type 总共有以下几种
+</p>
+<ul class="org-ul">
+<li>“center”</li>
+<li>“comment”</li>
+<li>“dynamic”</li>
+<li>“example”</li>
+<li>“export”</li>
+<li>“quote”</li>
+<li>“special”</li>
+<li>“verse”</li>
+<li>"src"</li>
+</ul>
+<p>
+这一节专注就是src block
+</p>
+</div>
+<div id="outline-container-org7198c0d" class="outline-3">
+<h3 id="org7198c0d"><span class="section-number-3">6.1</span> code block structure</h3>
+<div class="outline-text-3" id="text-6-1">
+<pre class="example">
+ #+NAME: &lt;name&gt;
+ #+BEGIN_SRC &lt;language&gt; &lt;switches&gt; &lt;header arguments&gt;
+&lt;body&gt;
+#+END_SRC
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-sh">ls
+</pre>
+</div>
+
+<p>
+switches 以-开头，比如前面用过的-n
+header argument 以 :argname value 这样报的形式出现，可以有多个。
+</p>
+
+
+<table id="org5f78212" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orga5e7a45"><span style="color: #4d4d4c;">(</span>length table<span style="color: #4d4d4c;">)</span>
+</pre>
+</div>
+
+<p>
+上面table-length函数，返回example-table的长度，使用org-babel-excute可看结果是4,
+</p>
+
+<p>
+org 2.0以后的版本有org-insert-structure-template 函数， 你也可以使用下面自己写的函数。
+</p>
+
+
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+<span style="color: #4d4d4c;">(</span><span style="color: #718c00;">defun</span> <span style="color: #f5871f;">org-insert-source-block</span> <span style="color: #3e999f;">(</span>name language switches header<span style="color: #3e999f;">)</span>
+  <span style="color: #8959a8;">"Asks name, language, switches, header.</span>
+<span style="color: #8959a8;">Inserts org-mode source code snippet"</span>
+  <span style="color: #3e999f;">(</span><span style="color: #718c00;">interactive</span> <span style="color: #3e999f;">"sname?</span>
+<span style="color: #3e999f;">slanguage?</span>
+<span style="color: #3e999f;">sswitches?</span>
+<span style="color: #3e999f;">sheader? "</span><span style="color: #3e999f;">)</span>
+  <span style="color: #3e999f;">(</span>insert
+   <span style="color: #eab700;">(</span><span style="color: #718c00;">if</span> <span style="color: #718c00;">(</span>string= name <span style="color: #3e999f;">""</span><span style="color: #718c00;">)</span>
+       <span style="color: #3e999f;">""</span>
+     <span style="color: #718c00;">(</span>concat <span style="color: #3e999f;">"#+NAME: "</span> name<span style="color: #718c00;">)</span> <span style="color: #eab700;">)</span>
+   <span style="color: #eab700;">(</span>format <span style="color: #3e999f;">"</span>
+<span style="color: #3e999f;">#+BEGIN_SRC %s %s %s</span>
+
+<span style="color: #3e999f;">#+END_SRC"</span> language switches header
+<span style="color: #eab700;">)</span>
+   <span style="color: #3e999f;">)</span>
+  <span style="color: #3e999f;">(</span>forward-line -1<span style="color: #3e999f;">)</span>
+  <span style="color: #3e999f;">(</span>goto-char <span style="color: #eab700;">(</span>line-end-position<span style="color: #eab700;">)</span><span style="color: #3e999f;">)</span>
+  <span style="color: #4d4d4c;">)</span>
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org9957f61" class="outline-4">
+<h4 id="org9957f61"><span class="section-number-4">6.1.1</span> header argument</h4>
+<div class="outline-text-4" id="text-6-1-1">
+</div>
+<div id="outline-container-org3dc3fc1" class="outline-5">
+<h5 id="org3dc3fc1"><span class="section-number-5">6.1.1.1</span> 系统级参数</h5>
+<div class="outline-text-5" id="text-6-1-1-1">
+<p>
+定义于org-babel-default-header-args 变量之中。
+各个语言相应的可以改变这些设置，在org-babel-default-header-args:&lt;LANG&gt; 中定义
+</p>
+</div>
+</div>
+<div id="outline-container-org0bb71eb" class="outline-5">
+<h5 id="org0bb71eb"><span class="section-number-5">6.1.1.2</span> buffer org 参数</h5>
+<div class="outline-text-5" id="text-6-1-1-2">
+<p>
+可以使用org property来设置
+</p>
+
+<pre class="example">
+#+PROPERTY: header-args:R  :session *R*
+#+PROPERTY: header-args    :results silent
+
+</pre>
+
+<p>
+也可以结构树下覆盖
+</p>
+<pre class="example">
+*sample header
+  :PROPERTIES:
+  :header-args:    :cache yes
+  :END:
+</pre>
+
+<p>
+再就是直接在block中设置了
+</p>
+<pre class="example">
+#+NAME: factorial
+#+BEGIN_SRC haskell :results silent :exports code :var n=0
+  fac 0 = 1
+  fac n = n * fac (n-1)
+#+END_SRC
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org913b93e" class="outline-5">
+<h5 id="org913b93e"><span class="section-number-5">6.1.1.3</span> code block的环境</h5>
+<div class="outline-text-5" id="text-6-1-1-3">
+</div>
+<ol class="org-ol">
+<li><a id="org6077210"></a>传参<br />
+<div class="outline-text-6" id="text-6-1-1-3-1">
+<p>
+通过 var header argument  可以传入参数
+</p>
+<pre class="example">
+:var NAME=ASSIGN
+</pre>
+
+<p>
+参数可以传入table ,这样就可以快速的处理表格了，比如数行，数列。
+参数可以传入 org 定义的列表 ，就是以-开头的。
+参数可以通过ASSIGN(),来引用其它的src block,还可以加默认参数
+</p>
+<pre class="example">
+#+NAME: double
+#+BEGIN_SRC emacs-lisp :var input=8
+  (* 2 input)
+#+END_SRC
+
+#+RESULTS: double
+: 16
+
+#+NAME: squared
+#+BEGIN_SRC emacs-lisp :var input=double(input=1)
+  (* input input)
+#+END_SRC
+
+#+RESULTS: squared
+: 4
+</pre>
+
+<p>
+上面的例子，double函数有默认输入8,所以单独执行输出16, squared 参数的参数，默认是1,实际传入的是2
+</p>
+</div>
+</li>
+<li><a id="orgf32e094"></a>session<br />
+<div class="outline-text-6" id="text-6-1-1-3-2">
+<p>
+不同的src black可以共享环境，这就是session的作用
+</p>
+</div>
+</li>
+<li><a id="org23a91d4"></a>dir<br />
+<div class="outline-text-6" id="text-6-1-1-3-3">
+<p>
+可以设置工作目录
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgbeb7a42" class="outline-5">
+<h5 id="orgbeb7a42"><span class="section-number-5">6.1.1.4</span> evaluating src block</h5>
+<div class="outline-text-5" id="text-6-1-1-4">
+<p>
+C-c C-v e runs the command org-babel-execute-maybe, 就是运行。
+运行结果在src block 下面。
+有哪些语言是打开，可执行的状态 可以查和设置   org-babel-load-languages 变量 。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb14c755" class="outline-5">
+<h5 id="orgb14c755"><span class="section-number-5">6.1.1.5</span> result of evaluating</h5>
+<div class="outline-text-5" id="text-6-1-1-5">
+<p>
+执行的结果是什么，如果处理，是多个header args 相配合的结果。
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orge5ced2f"></a>results<br />
+<div class="outline-text-6" id="text-6-1-1-5-1">
+<p>
+这个header argument 可以接受四类选项。
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgc2a9a6b"></a>collect<br />
+<div class="outline-text-7" id="text-6-1-1-5-1-1">
+<p>
+这一类有两个值， value 和 output.  决定的是org如果收集结果。
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgf567003"></a>value<br />
+<div class="outline-text-8" id="text-6-1-1-5-1-1-1">
+<p>
+将src block 用函数包起来。 将src block最后一行的结果返回，只取结果
+</p>
+</div>
+</li>
+
+<li><a id="org5106b81"></a>output<br />
+<div class="outline-text-8" id="text-6-1-1-5-1-1-2">
+<p>
+只取输出。  但这要说明的是，如果使用:session模式运行， org与解析器是一句一句通信此时，解析器可能会有echo
+</p>
+<pre class="example">
+
+#+BEGIN_SRC python :results output
+  print "hello"
+  2
+  print "bye"
+#+END_SRC
+
+RESULTS:
+: hello
+: bye
+
+</pre>
+<p>
+In the above non-session mode, the “2” is not printed; so it does not appear in results.
+</p>
+
+
+<pre class="example">
+#+BEGIN_SRC python :results output :session
+  print "hello"
+  2
+  print "bye"
+#+END_SRC
+
+RESULTS:
+: hello
+: 2
+: bye
+
+</pre>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="org86da642"></a>type<br />
+<div class="outline-text-7" id="text-6-1-1-5-1-2">
+<p>
+就是src返回的类型，也就是，org evaluating code之后，要以什么类型显示在 Result里。
+</p>
+
+
+<p>
+比如file，那就会是一个文件名。 这个类型我看懂了
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">#+BEGIN_SRC asymptote :results value file :file circle.pdf :output-dir img/
+  size(2cm);
+  draw(unitcircle);
+</pre>
+</div>
+<p>
+#+END<sub>SRC</sub>
+上面的代码，就是把程序运行结果输出到文件 img/circle.pdf 上。
+如果没指定output-dir 就是当前目录。 如果没指定 :file 那就用src block的Name。 但你要:file-ext pdf 指定扩展名
+</p>
+</div>
+</li>
+
+<li><a id="org10453fe"></a>format<br />
+<div class="outline-text-7" id="text-6-1-1-5-1-3">
+<p>
+这个确定的是，返回的结果到org后，怎么显示的问题，比如返回的type 如果是file,那它是一个文件名吧，那这个文件名是显示成link, 还是显示成就文件名啊。
+</p>
+<pre class="example">
+#+begin_src emacs-lisp :results value code
+(* 2 8)
+#+end_src
+
+#+RESULTS:
+#+begin_src emacs-lisp
+16
+#+end_src
+
+</pre>
+<p>
+上例是将value ,显示成src code
+</p>
+
+<p>
+<code>#+BEGIN_EXPORT html</code> 是做什么用的？ 是说，只有org被导成html的时候，那么这个块包含的代码要原封不动的导出去。
+</p>
+
+<p>
+上面的示例，把code 改成html, 那么就会用 <code>#+BEGIN_EXPORT html</code>  包 16啦。
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-orgaa25673" class="outline-2">
+<h2 id="orgaa25673"><span class="section-number-2">7</span> Export</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+负责把org转换成其它模式的库叫back-ends , 在org包中，以ox-Name.el为名。
+通过配置变量org-export-backends，或者直接 (require 'ox-Name)
+</p>
+
+<p>
+注释，以#开头的内容，或者‘#+BEGIN<sub>COMMENT</sub>’ 是不会被导出的。
+</p>
+</div>
+<div id="outline-container-org93e3553" class="outline-3">
+<h3 id="org93e3553"><span class="section-number-3">7.1</span> The Export Dispatcher</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+这个东西具体是什么还不清楚，只知道 C-c C-e # 或 org-export-dispatch # 可快速添加html设置模板
+</p>
+</div>
+</div>
+<div id="outline-container-orgcedc0ef" class="outline-3">
+<h3 id="orgcedc0ef"><span class="section-number-3">7.2</span> Export setting</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+设置方式有两种，一种是通过 变量 全局设置， 另一种叫<a href="https://orgmode.org/manual/In_002dbuffer-Settings.html#In_002dbuffer-Settings">In-buffer Settings</a> , 在org buffer 中以‘#+“进行设置 。
+in-buffer settging 可以出现在buffer的任何位置 ，还可以通过 ‘#+SETUPFILE: filename or URL’ syntax 来引用其它配置文件。
+对特定 back-end的模板可以通过 C-c C-e # 或 org-export-dispatch # 再选择back-end进行快速加入。
+export keyword 对所有的back-end都是通用的。 也有对应的变量 。
+</p>
+<ul class="org-ul">
+<li>AUTHOR (user-full-name)</li>
+<li>CREATOR (org-export-creator-string) 公司</li>
+<li>DATE <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-02 六&gt;</span></span></li>
+<li>EMAIL</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdc91f61" class="outline-3">
+<h3 id="orgdc91f61"><span class="section-number-3">7.3</span> Table of content (TOC)</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+就是关于开关索引的设置
+</p>
+<pre class="example">
+#+OPTIONS: toc:2          (only include two levels in TOC)
+#+OPTIONS: toc:nil        (no default TOC at all)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org43ad2d2" class="outline-3">
+<h3 id="org43ad2d2"><span class="section-number-3">7.4</span> include</h3>
+<div class="outline-text-3" id="text-7-4">
+<pre class="example">
+#+INCLUDE: "~/.emacs" src emacs-lisp
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org94e05d7" class="outline-3">
+<h3 id="org94e05d7"><span class="section-number-3">7.5</span> HTML setting</h3>
+<div class="outline-text-3" id="text-7-5">
+</div>
+<div id="outline-container-org3055841" class="outline-4">
+<h4 id="org3055841"><span class="section-number-4">7.5.1</span> HTML<sub>MATHJAX</sub></h4>
+<div class="outline-text-4" id="text-7-5-1">
+<p>
+对MathJax js库进行设置
+</p>
+<pre class="example">
+#+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+#+HTML_MATHJAX: cancel.js noErrors.js
+</pre>
+<p>
+通过  org-html-mathjax-template 命令可以快速添加模板
+查变量 org-html-mathjax-options 的帮助文档可以查看所有的选项。
+</p>
+<pre class="example">
+#+OPTIONS: tex:dvipng
+#+OPTIONS: tex:dvisvgm
+or
+
+#+OPTIONS: tex:imagemagick
+</pre>
+<p>
+上面的选项可以让Latex使用小图片，前提是系统里有dvipng dvisvgm这些工具。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1f90ed3" class="outline-4">
+<h4 id="org1f90ed3"><span class="section-number-4">7.5.2</span> ‘HTML<sub>LINK</sub><sub>HOME</sub>’</h4>
+<div class="outline-text-4" id="text-7-5-2">
+<p>
+The URL for home link (org-html-link-home).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdaddcfd" class="outline-4">
+<h4 id="orgdaddcfd"><span class="section-number-4">7.5.3</span> ‘HTML<sub>LINK</sub><sub>UP</sub>’</h4>
+<div class="outline-text-4" id="text-7-5-3">
+<p>
+The URL for the up link of exported HTML pages (org-html-link-up).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaf033e7" class="outline-4">
+<h4 id="orgaf033e7"><span class="section-number-4">7.5.4</span> CSS</h4>
+<div class="outline-text-4" id="text-7-5-4">
+<p>
+<a href="https://orgmode.org/manual/CSS-support.html#CSS-support">css support</a>
+</p>
+<pre class="example">
+#+STYLE: &lt;link rel="stylesheet" type="text/css" href="slides.css" /&gt;
+
+#+HTML_HEAD: &lt;link rel="stylesheet" type="text/css" href="style1.css" /&gt;
+#+HTML_HEAD_EXTRA: &lt;link rel="alternate stylesheet" type="text/css" href="style2.css" /&gt;
+
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org991557f" class="outline-4">
+<h4 id="org991557f"><span class="section-number-4">7.5.5</span> js support</h4>
+<div class="outline-text-4" id="text-7-5-5">
+<p>
+已经有一个专门为org 写的js为 叫 <a href="https://orgmode.org/worg/code/org-info-js/">https://orgmode.org/worg/code/org-info-js/</a>.
+要使用它只需要将下面的设置加入到org文档中。
+</p>
+<pre class="example">
+#+INFOJS_OPT: view:info toc:nil
+</pre>
+<p>
+通过 查看变量 org-html-infojs-options 的帮助文档可以查看所有的选项.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2df67d0" class="outline-2">
+<h2 id="org2df67d0"><span class="section-number-2">8</span> publish</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+<a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">publishing tutorial</a>
+</p>
+
+<p>
+发布的流程简介：
+</p>
+<ol class="org-ol">
+<li>设置org-publish-project-alist变量。</li>
+<li>M-x org-publish-project 发布。</li>
+</ol>
+
+
+<p>
+C-c C-e # 或 org-export-dispatch # 可快速添加html模板
+</p>
+
+<p>
+要理解这些设置的含义，要去学习export 那一章。
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org04f7423" class="outline-2">
+<h2 id="org04f7423"><span class="section-number-2">9</span> Bebal</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+是一个库吧，方便运行src block的
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf4abb24" class="outline-2">
+<h2 id="orgf4abb24"><span class="section-number-2">10</span> plantuml</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+新版的babel是支持的。 如果配置如下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">active Org-babel languages</span>
+<span style="color: #4d4d4c;">(</span>org-babel-do-load-languages
+ <span style="color: #718c00;">'</span><span style="color: #4271ae;">org-babel-load-languages</span>
+ <span style="color: #718c00;">'</span><span style="color: #3e999f;">(</span><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">other Babel languages</span>
+   <span style="color: #eab700;">(</span>plantuml . t<span style="color: #eab700;">)</span><span style="color: #3e999f;">)</span><span style="color: #4d4d4c;">)</span>
+
+<span style="color: #4d4d4c;">(</span><span style="color: #718c00;">setq</span> org-plantuml-jar-path
+      <span style="color: #3e999f;">(</span>expand-file-name <span style="color: #3e999f;">"~/src/org/contrib/scripts/plantuml.jar"</span><span style="color: #3e999f;">)</span><span style="color: #4d4d4c;">)</span>
+</pre>
+</div>
+
+<p>
+查org-plantuml-jar-path 发现jar 已经安装好的。
+</p>
+
+<div class="figure">
+<p><img src="tryout.png" alt="tryout.png" />
+</p>
+</div>
+
+
+
+<div class="figure">
+<p><img src="latax.png" alt="latax.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div id="outline-container-orgd4c3e70" class="outline-2">
+<h2 id="orgd4c3e70"><span class="section-number-2">11</span> ref</h2>
+<div class="outline-text-2" id="text-11">
+<ol class="org-ol">
+<li>org manual  <a href="https://orgmode.org/manual/index.htm">https://orgmode.org/manual/index.htm</a></li>
+<li>org babel <a href="https://orgmode.org/worg/org-contrib/babel/">https://orgmode.org/worg/org-contrib/babel/</a></li>
+</ol>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+The link is: <a href="https://orgmode.org">https://orgmode.org</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-02-02 六 00:00</p>
+<p class="author">Author: Sunkehui</p>
+<p class="date">Created: 2019-02-02 六 14:43</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>
