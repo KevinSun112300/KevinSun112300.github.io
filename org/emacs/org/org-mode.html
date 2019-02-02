@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-02 六 18:03 -->
+<!-- 2019-02-02 六 18:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>org tutorial</title>
@@ -530,15 +530,15 @@ outline 第一个功能就是 Headlines， 也就是 “*” "<b><b>" "<b>*</b><
 <div id="outline-container-orgc83b209" class="outline-3">
 <h3 id="orgc83b209"><span class="section-number-3">2.6</span> Drawwer 抽屉</h3>
 <div class="outline-text-3" id="text-2-6">
-<p>
+<pre class="example">
 Still outside the drawer
-</p>
-<p>
+:DRAWERNAME:
 This is inside the drawer.
-</p>
-<p>
+:END:
 After the drawer.
-</p>
+
+</pre>
+
 
 <p>
 这玩意也就是在org mode里可以用 在markdown 和html里都没有用。
@@ -584,6 +584,15 @@ org block type 总共有以下几种
 <p>
 注脚，感觉这个也很有用.
 </p>
+<pre class="example">
+The Org homepage[fn:1] now looks a lot better than it used to.
+
+在markdown 和html里都有用。
+
+
+[fn:1] The link is: https://orgmode.org
+
+</pre>
 
 <p>
 The Org homepage<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> now looks a lot better than it used to.
@@ -627,11 +636,14 @@ The Org homepage<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> now 
 我这里是一个taget<a id="orgf72a29e"></a>
 </p>
 
-
-
 <p>
 然后这里引用连接<a href="#orgf72a29e">fisttargetdist</a>
 </p>
+<pre class="example">
+我这里是一个taget&lt;&lt;fisttaget&gt;&gt;
+然后这里引用连接[[fisttaget][fisttargetdist]]
+</pre>
+
 
 <p>
 在org mode里可以通过 C-c C-o 跳到目标
@@ -672,8 +684,19 @@ Here we refer to item <a href="#orgc645ea8">2</a>.
 <h3 id="org782b44b"><span class="section-number-3">5.1</span> Paragraphs</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
-BEGIN<sub>VERSE</sub> END<sub>VERSE</sub>  verse的意思是诗文， 在这个块下，你怎么写的它就怎么显示.
+verse的意思是诗文， 在这个块下，你怎么写的它就怎么显示.
 </p>
+<pre class="example">
+ #+BEGIN_VERSE
+ Great clouds overhead
+ Tiny black birds rise and fall
+ Snow covers Emacs
+
+    ---AlexSchroeder
+#+END_VERSE
+
+</pre>
+
 <p class="verse">
 Great clouds overhead<br />
 Tiny black birds rise and fall<br />
@@ -682,8 +705,11 @@ Snow covers Emacs<br />
 &#xa0;&#xa0;&#xa0;&#x2014;AlexSchroeder<br />
 </p>
 
+
+
+
 <p>
-BEGIN<sub>QUOTE</sub> END<sub>QUOTE</sub> 引言引用 ， 一般在引用名人名言时使用。 它会将&#x2014;以前的都放在一行。
+QUOTE 引言引用 ， 一般在引用名人名言时使用。 它会将&#x2014;以前的都放在一行。
 </p>
 <blockquote>
 <p>
@@ -703,7 +729,7 @@ but not any simpler &#x2014;Albert Einstein
 </blockquote>
 
 <p>
-BEGIN<sub>CENTER</sub> END<sub>CENTER</sub> 居中引用，在块里使用\\是强制换行
+CENTER 居中引用，在块里使用\\是强制换行
 </p>
 <div class="org-center">
 <p>
@@ -713,7 +739,7 @@ but not any simpler
 </div>
 
 <p>
-BEGIN<sub>EXAMPLE</sub> 也是比较常用的。
+BEGIN<sub>EXAMPLE</sub> 也是比较常用的。用于代码示例
 </p>
 </div>
 </div>
@@ -722,7 +748,7 @@ BEGIN<sub>EXAMPLE</sub> 也是比较常用的。
 <h3 id="orgda685ee"><span class="section-number-3">5.2</span> Emphasis and Monospace强调</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
-‘*bold*’, ‘/italic/’, ‘<sub>underlined</sub>_’, ‘=verbatim=’ and ‘~code~’,
+‘*bold*’, ‘/italic/’, <span class="underline">undefined</span>,  <code>verbatim</code> and  <code>code</code> ,
 <b>bold</b>
 <i>italic</i>
 <span class="underline">下划线</span>
@@ -735,8 +761,24 @@ BEGIN<sub>EXAMPLE</sub> 也是比较常用的。
 <p>
 <code>&lt;php? echo "hello world"&gt;?</code>
 </p>
+
+<pre class="example">
+ ‘*bold*’, ‘/italic/’, _undefined_   =verbatim=  and ~code~,
+*bold*
+/italic/
+_下划线_
+
+=淡化=
+
+~&lt;php? echo "hello world"&gt;?~
+
+</pre>
+<p>
+注意符号两边都必须是空格。
+</p>
 </div>
 </div>
+
 <div id="outline-container-orge3449a1" class="outline-3">
 <h3 id="orge3449a1"><span class="section-number-3">5.3</span> 下标和上标</h3>
 <div class="outline-text-3" id="text-5-3">
@@ -760,6 +802,13 @@ the radius of Alpha Centauri is R<sub>Alpha Centauri</sub> = 1.28 x R<sub>sun</s
 使用类LaTeX-like syntax ， 以\开头 org-entities-help 可以查到所有的符号
 </p>
 
+<pre class="example">
+箭头 \to
+
+Pro tip: Given a circle \Gamma of diameter d, the length of its
+circumference is \pi{}d.
+
+</pre>
 <p>
 箭头 &rarr;
 </p>
@@ -1521,7 +1570,7 @@ The link is: <a href="https://orgmode.org">https://orgmode.org</a>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-02-02 六 00:00</p>
 <p class="author">Author: Sunkehui</p>
-<p class="date">Created: 2019-02-02 六 18:03</p>
+<p class="date">Created: 2019-02-02 六 18:19</p>
 <p class="validation"></p>
 </div>
 </body>
