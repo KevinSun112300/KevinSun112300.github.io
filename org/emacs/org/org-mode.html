@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-02 六 17:50 -->
+<!-- 2019-02-02 六 18:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>org tutorial</title>
@@ -400,7 +400,7 @@ org mode 是基于 Outline mode
 <h3 id="org6516be0"><span class="section-number-3">2.2</span> Headlines</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-outline 第一个功能就是 Headlines， 也就是 “*” "<b><b>" "<b>*</b></b></b>" 这样的标题分级。 在youdao markdown
+outline 第一个功能就是 Headlines， 也就是 “*” "<b><b>" "<b>*</b></b></b>" 这样的标题分级。 在 markdown
 中使用的是"#"
 </p>
 </div>
@@ -409,17 +409,20 @@ outline 第一个功能就是 Headlines， 也就是 “*” "<b><b>" "<b>*</b><
 <h3 id="orgd42aa06"><span class="section-number-3">2.3</span> Visibility Cycling</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-这就是说，每一节的可见性是一个圈，通过那行首，按Tab， 可以切换可视性。
+这就是说，每一节的可见性是一个圈，通过在行首，按Tab， 可以切换可视性。
 以下是快捷键和函数。
-TAB (org-cycle)
-（org-global-cycle) 全局切换
-(outline-show-all) 全部展开
-(org-copy-visible) 把当前可见的内容拷贝
-(outline-show-children) 把当前节点的子节点显示出来
-(outline-show-subtree)把当前节点的所有子树显示出来
 </p>
+<ul class="org-ul">
+<li>TAB (org-cycle)</li>
+<li>（org-global-cycle) 全局切换</li>
+<li>(outline-show-all) 全部展开</li>
+<li>(org-copy-visible) 把当前可见的内容拷贝</li>
+<li>(outline-show-children) 把当前节点的子节点显示出来</li>
+<li>(outline-show-subtree)把当前节点的所有子树显示出来</li>
+</ul>
 </div>
 </div>
+
 
 <div id="outline-container-orgc42a574" class="outline-3">
 <h3 id="orgc42a574"><span class="section-number-3">2.4</span> Structure Editting</h3>
@@ -505,10 +508,17 @@ TAB (org-cycle)
 <p>
 描述项示例
 </p>
+<pre class="example">
+- Elijah Wood :: He plays Frodo
+- Sean Astin :: He plays Sam, Frodo's friend. I still remember him
+
+</pre>
+
 <dl class="org-dl">
 <dt>Elijah Wood</dt><dd>He plays Frodo</dd>
 <dt>Sean Astin</dt><dd>He plays Sam, Frodo's friend. I still remember him</dd>
 </dl>
+
 
 
 <p>
@@ -1407,7 +1417,7 @@ C-c C-e # 或 org-export-dispatch # 可快速添加html模板
 </p>
 
 <p>
-要理解这些设置的含义，要去学习export 那一章 123。
+要理解这些设置的含义，要去学习export 那一章 。
 </p>
 
 <p>
@@ -1425,7 +1435,11 @@ org-purlish-project 使用的org-html-publish-to-html就不好使。
 </p>
 
 <p>
-另外 publish 这个东西有cache
+另外 publish 这个东西有cache?
+</p>
+
+<p>
+我去，血的教训， 配置文件:base-directory 写错误了！！！！
 </p>
 </div>
 </div>
@@ -1507,7 +1521,7 @@ The link is: <a href="https://orgmode.org">https://orgmode.org</a>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-02-02 六 00:00</p>
 <p class="author">Author: Sunkehui</p>
-<p class="date">Created: 2019-02-02 六 17:50</p>
+<p class="date">Created: 2019-02-02 六 18:03</p>
 <p class="validation"></p>
 </div>
 </body>
