@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-02 六 18:19 -->
+<!-- 2019-02-02 六 18:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>org tutorial</title>
@@ -835,10 +835,14 @@ LaTex 是基于Tex 的宏库。
 </p>
 
 <p>
-千万用apt get 装 太老了
+千万别用apt get 装 太老了
 sudo apt-get install texlive-full
 sudo apt-get install texmaker
+</p>
+
+<p>
 更严重的问题是导出pdf也有问题，经查是因为apt安装的Tex live太老了是2015 现在都 2018了。
+安装看下面的连接。
 <a href="https://www.tug.org/texlive/">texlive</a>  /usr/local/texlive/2018
 </p>
 
@@ -847,12 +851,20 @@ sudo apt-get install texmaker
 <p>
 这个片段，当导出成LaTex 保持不变，当导出成HTML的时候，它可以被弄成图片，或者 通过 <a href="https://www.mathjax.org/">MathJax </a> 一个jsy加导成svg
 </p>
+<pre class="example">
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
 
-<p>
-\begin{equation}                        % arbitrary environments,
-x=\sqrt{b}                              % even tables, figures
-\end{equation}                          % etc
-</p>
+If $a^2=b$ and \( b=2 \), then the solution must be
+either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
+
+</pre>
+
+
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
 
 <p>
 If \(a^2=b\) and \( b=2 \), then the solution must be
@@ -870,6 +882,7 @@ org-preview-latex-default-process 变量设置了图片转换工具,它可能是
 </div>
 </div>
 </div>
+
 
 
 
@@ -1570,7 +1583,7 @@ The link is: <a href="https://orgmode.org">https://orgmode.org</a>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-02-02 六 00:00</p>
 <p class="author">Author: Sunkehui</p>
-<p class="date">Created: 2019-02-02 六 18:19</p>
+<p class="date">Created: 2019-02-02 六 18:24</p>
 <p class="validation"></p>
 </div>
 </body>
