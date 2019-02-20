@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-14 四 15:11 -->
+<!-- 2019-02-20 三 11:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>java 设计模式</title>
@@ -272,6 +272,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgac796ee">2.3. Composite Patten构成模式</a></li>
 <li><a href="#org615fc57">2.4. Bridge Pattern</a></li>
 <li><a href="#org67e073e">2.5. Proxy Pattern</a></li>
+<li><a href="#orgcf5d8f4">2.6. Flyweight Pattern 享元模式</a></li>
 </ul>
 </li>
 <li><a href="#org0e822f8">3. Creational Patterns</a>
@@ -390,6 +391,7 @@ Car "1" o-- "4" 轮胎
 
 
 
+
 <div id="outline-container-orgd69562f" class="outline-2">
 <h2 id="orgd69562f"><span class="section-number-2">2</span> Structural Patterns</h2>
 <div class="outline-text-2" id="text-2">
@@ -413,10 +415,10 @@ Car "1" o-- "4" 轮胎
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">XpayToPayDAdapter</span> <span style="color: #718c00;">implements</span> <span style="color: #4271ae;">PayD</span><span style="color: #4d4d4c;">{</span>
-<span style="color: #718c00;">private</span> <span style="color: #718c00;">final</span> <span style="color: #4271ae;">Xpay</span> <span style="color: #eab700;">xpay</span>;
-<span style="color: #718c00;">public</span> <span style="color: #f5871f;">XpayToPayDAdapter</span><span style="color: #3e999f;">(</span><span style="color: #4271ae;">Xpay</span> <span style="color: #eab700;">xpay</span><span style="color: #3e999f;">){</span>
-<span style="color: #3e999f;">}</span>
+<pre class="src src-java"><span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">XpayToPayDAdapter</span> <span style="color: #b5bd68;">implements</span> <span style="color: #81a2be;">PayD</span><span style="color: #c5c8c6;">{</span>
+<span style="color: #b5bd68;">private</span> <span style="color: #b5bd68;">final</span> <span style="color: #81a2be;">Xpay</span> <span style="color: #f0c674;">xpay</span>;
+<span style="color: #b5bd68;">public</span> <span style="color: #de935f;">XpayToPayDAdapter</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Xpay</span> <span style="color: #f0c674;">xpay</span><span style="color: #8abeb7;">){</span>
+<span style="color: #8abeb7;">}</span>
 </pre>
 </div>
 </div>
@@ -428,31 +430,31 @@ Car "1" o-- "4" 轮胎
 Facade模式可以用于，封闭复杂子系统， 或者分层系统，
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #718c00;">package</span> com.javacodegeeks.patterns.<span style="color: #4271ae;">facadepattern</span>;
-<span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">ScheduleServerFacade</span> <span style="color: #4d4d4c;">{</span>
+<pre class="src src-java"><span style="color: #b5bd68;">package</span> com.javacodegeeks.patterns.<span style="color: #81a2be;">facadepattern</span>;
+<span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">ScheduleServerFacade</span> <span style="color: #c5c8c6;">{</span>
 
-  <span style="color: #718c00;">private</span> <span style="color: #718c00;">final</span> <span style="color: #4271ae;">ScheduleServer</span> <span style="color: #eab700;">scheduleServer</span>;
+  <span style="color: #b5bd68;">private</span> <span style="color: #b5bd68;">final</span> <span style="color: #81a2be;">ScheduleServer</span> <span style="color: #f0c674;">scheduleServer</span>;
 
-  <span style="color: #718c00;">public</span> <span style="color: #f5871f;">ScheduleServerFacade</span><span style="color: #3e999f;">(</span><span style="color: #4271ae;">ScheduleServer</span> <span style="color: #eab700;">scheduleServer</span><span style="color: #3e999f;">){</span>
-    <span style="color: #718c00;">this</span>.scheduleServer = scheduleServer;
-  <span style="color: #3e999f;">}</span>
-  <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">startServer</span><span style="color: #3e999f;">(){</span>
-    scheduleServer.startBooting<span style="color: #eab700;">()</span>;
-    scheduleServer.readSystemConfigFile<span style="color: #eab700;">()</span>;
-    scheduleServer.init<span style="color: #eab700;">()</span>;
-    scheduleServer.initializeContext<span style="color: #eab700;">()</span>;
-    scheduleServer.initializeListeners<span style="color: #eab700;">()</span>;
-    scheduleServer.createSystemObjects<span style="color: #eab700;">()</span>;
-  <span style="color: #3e999f;">}</span>
-  <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">stopServer</span><span style="color: #3e999f;">(){</span>
-    scheduleServer.releaseProcesses<span style="color: #eab700;">()</span>;
-    scheduleServer.destory<span style="color: #eab700;">()</span>;
-    scheduleServer.destroySystemObjects<span style="color: #eab700;">()</span>;
-    scheduleServer.destoryListeners<span style="color: #eab700;">()</span>;
-    scheduleServer.destoryContext<span style="color: #eab700;">()</span>;
-    scheduleServer.shutdown<span style="color: #eab700;">()</span>;
-  <span style="color: #3e999f;">}</span>
-<span style="color: #4d4d4c;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #de935f;">ScheduleServerFacade</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">ScheduleServer</span> <span style="color: #f0c674;">scheduleServer</span><span style="color: #8abeb7;">){</span>
+    <span style="color: #b5bd68;">this</span>.scheduleServer = scheduleServer;
+  <span style="color: #8abeb7;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">startServer</span><span style="color: #8abeb7;">(){</span>
+    scheduleServer.startBooting<span style="color: #f0c674;">()</span>;
+    scheduleServer.readSystemConfigFile<span style="color: #f0c674;">()</span>;
+    scheduleServer.init<span style="color: #f0c674;">()</span>;
+    scheduleServer.initializeContext<span style="color: #f0c674;">()</span>;
+    scheduleServer.initializeListeners<span style="color: #f0c674;">()</span>;
+    scheduleServer.createSystemObjects<span style="color: #f0c674;">()</span>;
+  <span style="color: #8abeb7;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">stopServer</span><span style="color: #8abeb7;">(){</span>
+    scheduleServer.releaseProcesses<span style="color: #f0c674;">()</span>;
+    scheduleServer.destory<span style="color: #f0c674;">()</span>;
+    scheduleServer.destroySystemObjects<span style="color: #f0c674;">()</span>;
+    scheduleServer.destoryListeners<span style="color: #f0c674;">()</span>;
+    scheduleServer.destoryContext<span style="color: #f0c674;">()</span>;
+    scheduleServer.shutdown<span style="color: #f0c674;">()</span>;
+  <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
 </pre>
 </div>
 
@@ -494,49 +496,49 @@ Facade模式可以用于，封闭复杂子系统， 或者分层系统，
 左边一条线：
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #718c00;">package</span> com.qianyan.<span style="color: #4271ae;">bridge</span>;
+<pre class="src src-java"><span style="color: #b5bd68;">package</span> com.qianyan.<span style="color: #81a2be;">bridge</span>;
 
-<span style="color: #718c00;">public</span> <span style="color: #718c00;">abstract</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">Car</span> <span style="color: #4d4d4c;">{</span>
+<span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">abstract</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Car</span> <span style="color: #c5c8c6;">{</span>
 
-  <span style="color: #718c00;">private</span> <span style="color: #4271ae;">Engine</span> <span style="color: #eab700;">engine</span>;
+  <span style="color: #b5bd68;">private</span> <span style="color: #81a2be;">Engine</span> <span style="color: #f0c674;">engine</span>;
 
-  <span style="color: #718c00;">public</span> <span style="color: #f5871f;">Car</span><span style="color: #3e999f;">(</span><span style="color: #4271ae;">Engine</span> <span style="color: #eab700;">engine</span><span style="color: #3e999f;">)</span> <span style="color: #3e999f;">{</span>
-    <span style="color: #718c00;">this</span>.engine = engine;
-  <span style="color: #3e999f;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #de935f;">Car</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Engine</span> <span style="color: #f0c674;">engine</span><span style="color: #8abeb7;">)</span> <span style="color: #8abeb7;">{</span>
+    <span style="color: #b5bd68;">this</span>.engine = engine;
+  <span style="color: #8abeb7;">}</span>
 
-  <span style="color: #718c00;">public</span> <span style="color: #4271ae;">Engine</span> <span style="color: #f5871f;">getEngine</span><span style="color: #3e999f;">()</span> <span style="color: #3e999f;">{</span>
-    <span style="color: #718c00;">return</span> engine;
-  <span style="color: #3e999f;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">Engine</span> <span style="color: #de935f;">getEngine</span><span style="color: #8abeb7;">()</span> <span style="color: #8abeb7;">{</span>
+    <span style="color: #b5bd68;">return</span> engine;
+  <span style="color: #8abeb7;">}</span>
 
-  <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">setEngine</span><span style="color: #3e999f;">(</span><span style="color: #4271ae;">Engine</span> <span style="color: #eab700;">engine</span><span style="color: #3e999f;">)</span> <span style="color: #3e999f;">{</span>
-    <span style="color: #718c00;">this</span>.engine = engine;
-  <span style="color: #3e999f;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">setEngine</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Engine</span> <span style="color: #f0c674;">engine</span><span style="color: #8abeb7;">)</span> <span style="color: #8abeb7;">{</span>
+    <span style="color: #b5bd68;">this</span>.engine = engine;
+  <span style="color: #8abeb7;">}</span>
 
-  <span style="color: #718c00;">public</span> <span style="color: #718c00;">abstract</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">installEngine</span><span style="color: #3e999f;">()</span>;
-<span style="color: #4d4d4c;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">abstract</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">installEngine</span><span style="color: #8abeb7;">()</span>;
+<span style="color: #c5c8c6;">}</span>
 
-<span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">Bus</span> <span style="color: #718c00;">extends</span> <span style="color: #4271ae;">Car</span> <span style="color: #4d4d4c;">{</span>
+<span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Bus</span> <span style="color: #b5bd68;">extends</span> <span style="color: #81a2be;">Car</span> <span style="color: #c5c8c6;">{</span>
 
-  <span style="color: #718c00;">public</span> <span style="color: #f5871f;">Bus</span><span style="color: #3e999f;">(</span><span style="color: #4271ae;">Engine</span> <span style="color: #eab700;">engine</span><span style="color: #3e999f;">)</span> <span style="color: #3e999f;">{</span>
-    <span style="color: #718c00;">super</span><span style="color: #eab700;">(</span>engine<span style="color: #eab700;">)</span>;
-  <span style="color: #3e999f;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #de935f;">Bus</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Engine</span> <span style="color: #f0c674;">engine</span><span style="color: #8abeb7;">)</span> <span style="color: #8abeb7;">{</span>
+    <span style="color: #b5bd68;">super</span><span style="color: #f0c674;">(</span>engine<span style="color: #f0c674;">)</span>;
+  <span style="color: #8abeb7;">}</span>
 
-  <span style="color: #4271ae;">@Override</span>
-  <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">installEngine</span><span style="color: #3e999f;">()</span> <span style="color: #3e999f;">{</span>
-    System.out.print<span style="color: #eab700;">(</span><span style="color: #3e999f;">"Bus:"</span><span style="color: #eab700;">)</span>;
-    <span style="color: #718c00;">this</span>.getEngine<span style="color: #eab700;">()</span>.installEngine<span style="color: #eab700;">()</span>;
-  <span style="color: #3e999f;">}</span>
+  <span style="color: #81a2be;">@Override</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">installEngine</span><span style="color: #8abeb7;">()</span> <span style="color: #8abeb7;">{</span>
+    System.out.print<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"Bus:"</span><span style="color: #f0c674;">)</span>;
+    <span style="color: #b5bd68;">this</span>.getEngine<span style="color: #f0c674;">()</span>.installEngine<span style="color: #f0c674;">()</span>;
+  <span style="color: #8abeb7;">}</span>
 
-  <span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">Jeep</span> <span style="color: #718c00;">extends</span> <span style="color: #4271ae;">Car</span> <span style="color: #3e999f;">{</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Jeep</span> <span style="color: #b5bd68;">extends</span> <span style="color: #81a2be;">Car</span> <span style="color: #8abeb7;">{</span>
 
-    <span style="color: #718c00;">public</span> <span style="color: #f5871f;">Jeep</span><span style="color: #eab700;">(</span><span style="color: #4271ae;">Engine</span> <span style="color: #eab700;">engine</span><span style="color: #eab700;">)</span> <span style="color: #eab700;">{</span>
-      <span style="color: #718c00;">super</span><span style="color: #718c00;">(</span>engine<span style="color: #718c00;">)</span>;
-    <span style="color: #eab700;">}</span>
-    <span style="color: #4271ae;">@Override</span>
-    <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">installEngine</span><span style="color: #eab700;">()</span> <span style="color: #eab700;">{</span>
-      System.out.print<span style="color: #718c00;">(</span><span style="color: #3e999f;">"Jeep:"</span><span style="color: #718c00;">)</span>;
-      <span style="color: #718c00;">this</span>.getEngine<span style="color: #718c00;">()</span>.installEngine<span style="color: #718c00;">()</span>;
-    <span style="color: #eab700;">}</span>
+    <span style="color: #b5bd68;">public</span> <span style="color: #de935f;">Jeep</span><span style="color: #f0c674;">(</span><span style="color: #81a2be;">Engine</span> <span style="color: #f0c674;">engine</span><span style="color: #f0c674;">)</span> <span style="color: #f0c674;">{</span>
+      <span style="color: #b5bd68;">super</span><span style="color: #b5bd68;">(</span>engine<span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span>
+    <span style="color: #81a2be;">@Override</span>
+    <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">installEngine</span><span style="color: #f0c674;">()</span> <span style="color: #f0c674;">{</span>
+      System.out.print<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">"Jeep:"</span><span style="color: #b5bd68;">)</span>;
+      <span style="color: #b5bd68;">this</span>.getEngine<span style="color: #b5bd68;">()</span>.installEngine<span style="color: #b5bd68;">()</span>;
+    <span style="color: #f0c674;">}</span>
 
 </pre>
 </div>
@@ -546,29 +548,29 @@ Facade模式可以用于，封闭复杂子系统， 或者分层系统，
 右边一条线
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #718c00;">public</span> <span style="color: #718c00;">interface</span> <span style="color: #4271ae;">Engine</span> <span style="color: #4d4d4c;">{</span>
+<pre class="src src-java"><span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">interface</span> <span style="color: #81a2be;">Engine</span> <span style="color: #c5c8c6;">{</span>
 
-        <span style="color: #8959a8;">/**</span>
-<span style="color: #8959a8;">         * &#23433;&#35013;&#21457;&#21160;&#24341;&#25806;</span>
-<span style="color: #8959a8;">         */</span>
-        <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">installEngine</span><span style="color: #3e999f;">()</span>;
-<span style="color: #4d4d4c;">}</span>
-<span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">Engine2000</span> <span style="color: #718c00;">implements</span> <span style="color: #4271ae;">Engine</span> <span style="color: #4d4d4c;">{</span>
+        <span style="color: #b294bb;">/**</span>
+<span style="color: #b294bb;">         * &#23433;&#35013;&#21457;&#21160;&#24341;&#25806;</span>
+<span style="color: #b294bb;">         */</span>
+        <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">installEngine</span><span style="color: #8abeb7;">()</span>;
+<span style="color: #c5c8c6;">}</span>
+<span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Engine2000</span> <span style="color: #b5bd68;">implements</span> <span style="color: #81a2be;">Engine</span> <span style="color: #c5c8c6;">{</span>
 
-        <span style="color: #4271ae;">@Override</span>
-        <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">installEngine</span><span style="color: #3e999f;">()</span> <span style="color: #3e999f;">{</span>
-                System.out.println<span style="color: #eab700;">(</span><span style="color: #3e999f;">"&#23433;&#35013;2000CC&#21457;&#21160;&#24341;&#25806;"</span><span style="color: #eab700;">)</span>;
-        <span style="color: #3e999f;">}</span>
+        <span style="color: #81a2be;">@Override</span>
+        <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">installEngine</span><span style="color: #8abeb7;">()</span> <span style="color: #8abeb7;">{</span>
+                System.out.println<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"&#23433;&#35013;2000CC&#21457;&#21160;&#24341;&#25806;"</span><span style="color: #f0c674;">)</span>;
+        <span style="color: #8abeb7;">}</span>
 
-<span style="color: #4d4d4c;">}</span>
-<span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">Engine2200</span> <span style="color: #718c00;">implements</span> <span style="color: #4271ae;">Engine</span> <span style="color: #4d4d4c;">{</span>
+<span style="color: #c5c8c6;">}</span>
+<span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Engine2200</span> <span style="color: #b5bd68;">implements</span> <span style="color: #81a2be;">Engine</span> <span style="color: #c5c8c6;">{</span>
 
-        <span style="color: #4271ae;">@Override</span>
-        <span style="color: #718c00;">public</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">installEngine</span><span style="color: #3e999f;">()</span> <span style="color: #3e999f;">{</span>
-                System.out.println<span style="color: #eab700;">(</span><span style="color: #3e999f;">"&#23433;&#35013;2200CC&#21457;&#21160;&#24341;&#25806;"</span><span style="color: #eab700;">)</span>;
-        <span style="color: #3e999f;">}</span>
+        <span style="color: #81a2be;">@Override</span>
+        <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">installEngine</span><span style="color: #8abeb7;">()</span> <span style="color: #8abeb7;">{</span>
+                System.out.println<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"&#23433;&#35013;2200CC&#21457;&#21160;&#24341;&#25806;"</span><span style="color: #f0c674;">)</span>;
+        <span style="color: #8abeb7;">}</span>
 
-<span style="color: #4d4d4c;">}</span>
+<span style="color: #c5c8c6;">}</span>
 
 
 </pre>
@@ -578,30 +580,24 @@ Facade模式可以用于，封闭复杂子系统， 或者分层系统，
 使用方法
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">MainClass</span> <span style="color: #4d4d4c;">{</span>
-        <span style="color: #718c00;">public</span> <span style="color: #718c00;">static</span> <span style="color: #4271ae;">void</span> <span style="color: #f5871f;">main</span><span style="color: #3e999f;">(</span><span style="color: #4271ae;">String</span><span style="color: #eab700;">[]</span> <span style="color: #eab700;">args</span><span style="color: #3e999f;">)</span> <span style="color: #3e999f;">{</span>
-                <span style="color: #4271ae;">Engine</span> <span style="color: #eab700;">engine2000</span> = <span style="color: #718c00;">new</span> <span style="color: #4271ae;">Engine2000</span><span style="color: #eab700;">()</span>;
-                <span style="color: #4271ae;">Engine</span> <span style="color: #eab700;">engine2200</span> = <span style="color: #718c00;">new</span> <span style="color: #4271ae;">Engine2200</span><span style="color: #eab700;">()</span>;
+<pre class="src src-java"><span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">MainClass</span> <span style="color: #c5c8c6;">{</span>
+        <span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">static</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">main</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">String</span><span style="color: #f0c674;">[]</span> <span style="color: #f0c674;">args</span><span style="color: #8abeb7;">)</span> <span style="color: #8abeb7;">{</span>
+                <span style="color: #81a2be;">Engine</span> <span style="color: #f0c674;">engine2000</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Engine2000</span><span style="color: #f0c674;">()</span>;
+                <span style="color: #81a2be;">Engine</span> <span style="color: #f0c674;">engine2200</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Engine2200</span><span style="color: #f0c674;">()</span>;
 
-                <span style="color: #4271ae;">Car</span> <span style="color: #eab700;">bus</span> = <span style="color: #718c00;">new</span> <span style="color: #4271ae;">Bus</span><span style="color: #eab700;">(</span>engine2000<span style="color: #eab700;">)</span>;
-                bus.installEngine<span style="color: #eab700;">()</span>;
+                <span style="color: #81a2be;">Car</span> <span style="color: #f0c674;">bus</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Bus</span><span style="color: #f0c674;">(</span>engine2000<span style="color: #f0c674;">)</span>;
+                bus.installEngine<span style="color: #f0c674;">()</span>;
 
-                <span style="color: #4271ae;">Car</span> <span style="color: #eab700;">jeep</span> = <span style="color: #718c00;">new</span> <span style="color: #4271ae;">Jeep</span><span style="color: #eab700;">(</span>engine2200<span style="color: #eab700;">)</span>;
-                jeep.installEngine<span style="color: #eab700;">()</span>;
-        <span style="color: #3e999f;">}</span>
-<span style="color: #4d4d4c;">}</span>
+                <span style="color: #81a2be;">Car</span> <span style="color: #f0c674;">jeep</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Jeep</span><span style="color: #f0c674;">(</span>engine2200<span style="color: #f0c674;">)</span>;
+                jeep.installEngine<span style="color: #f0c674;">()</span>;
+        <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
 </pre>
 </div>
 
 <p>
 为了更好的理解 桥接模式的用途，我们来想象一下如果不用桥接，这要怎么实现.
 </p>
-
-
-<div class="figure">
-<p><img src="nonbridge.png" alt="nonbridge.png" />
-</p>
-</div>
 </div>
 </div>
 
@@ -622,8 +618,170 @@ Facade模式可以用于，封闭复杂子系统， 或者分层系统，
 </ul>
 </div>
 </div>
+
+<div id="outline-container-orgcf5d8f4" class="outline-3">
+<h3 id="orgcf5d8f4"><span class="section-number-3">2.6</span> Flyweight Pattern 享元模式</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+面向对象编程让程序员的生活变得有趣而简单， 编程成了对现实的model化。
+但创建和保存太多的对象，会占用系统过多的内存资源。所以好的程序员要学习控制对象的创建。
+如果对象相似，比如大多数属性值是一样的，只有少量属性有变化， 就要想办法共享。
+</p>
+
+<p>
+有这样一个平台，用户可以选择编辑语言，和运行平台，然后这个平台替你运行并返回结果。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Code</span> <span style="color: #c5c8c6;">{</span>
+  <span style="color: #b5bd68;">private</span> <span style="color: #81a2be;">String</span> <span style="color: #f0c674;">code</span>;
+
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">String</span> <span style="color: #de935f;">getCode</span><span style="color: #8abeb7;">()</span> <span style="color: #8abeb7;">{</span>
+    <span style="color: #b5bd68;">return</span> code;
+  <span style="color: #8abeb7;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">setCode</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">String</span> <span style="color: #f0c674;">code</span><span style="color: #8abeb7;">)</span> <span style="color: #8abeb7;">{</span>
+    <span style="color: #b5bd68;">this</span>.code = code;
+  <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
+
+</pre>
+</div>
+<p>
+Code是一个轻量型对象。只是代表一段代码。
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">interface</span> <span style="color: #81a2be;">Platform</span> <span style="color: #c5c8c6;">{</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">execute</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Code</span> <span style="color: #f0c674;">code</span><span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+<span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">JavaPlatform</span> <span style="color: #b5bd68;">implements</span> <span style="color: #81a2be;">Platform</span> <span style="color: #c5c8c6;">{</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #de935f;">JavaPlatform</span><span style="color: #8abeb7;">(){</span>
+    System.out.println<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"JavaPlatform object created"</span><span style="color: #f0c674;">)</span>;
+  <span style="color: #8abeb7;">}</span>
+  <span style="color: #81a2be;">@Override</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">execute</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Code</span> <span style="color: #f0c674;">code</span><span style="color: #8abeb7;">)</span> <span style="color: #8abeb7;">{</span>
+    System.out.println<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"Compiling and executing Java code."</span><span style="color: #f0c674;">)</span>;
+  <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
+</pre>
 </div>
 
+<p>
+platform系统的对象是重型对象，建立环境还需要很多对象。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #81a2be;">Platform</span> <span style="color: #f0c674;">platform</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">JavaPlatform</span><span style="color: #c5c8c6;">()</span>;
+platform.execute<span style="color: #c5c8c6;">(</span>code<span style="color: #c5c8c6;">)</span>;
+
+</pre>
+</div>
+
+<p>
+当有2K的用户在线的时候，就要创建2k的Code对象，和2k的Platform对象。
+</p>
+
+<blockquote>
+<p>
+A flyweight is a shared object that can be used in multiple contexts simultaneously.
+</p>
+</blockquote>
+
+<p>
+这所以能够实现y共享，是因为将享元的属性状态分成了两类
+</p>
+<ul class="org-ul">
+<li>intrinsic state 内在状态 ， 在所有环境下都一样的状态属性</li>
+<li>extrinsic state 外在状态， 环境不同，属性状态不同</li>
+</ul>
+<p>
+intrinsic state 是可以被共享的，extrinsic 是不能共享的。
+</p>
+
+<p>
+享元模式的UML图是这样的
+</p>
+
+
+
+
+<div class="figure">
+<p><img src="flyweight.png" alt="flyweight.png" />
+</p>
+</div>
+
+
+<p>
+FlyweightFactory 是共享对象池，使用map 存储共享对象。 共享对象，通过 向操作 函数传入外在状态属性值来使用对象。
+</p>
+
+<p>
+针对我们上面使用的场景， platform 没有内在对象，只有一个外在对象，code, 通过 excute函数可以传入code.
+我们来看一下factory的实现
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">final</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">PlatformFactory</span> <span style="color: #c5c8c6;">{</span>
+  <span style="color: #b5bd68;">private</span> <span style="color: #b5bd68;">static</span> <span style="color: #81a2be;">Map</span><span style="color: #8abeb7;">&lt;</span><span style="color: #81a2be;">String</span>, <span style="color: #81a2be;">Platform</span><span style="color: #8abeb7;">&gt;</span> <span style="color: #f0c674;">map</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">HashMap</span><span style="color: #8abeb7;">&lt;&gt;()</span>;
+  <span style="color: #b5bd68;">private</span> <span style="color: #de935f;">PlatformFactory</span><span style="color: #8abeb7;">(){</span>
+    <span style="color: #b5bd68;">throw</span> <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">AssertionError</span><span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"Cannot instantiate the class"</span><span style="color: #f0c674;">)</span>;
+  <span style="color: #8abeb7;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">static</span> <span style="color: #b5bd68;">synchronized</span> <span style="color: #81a2be;">Platform</span> <span style="color: #de935f;">getPlatformInstance</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">String</span> <span style="color: #f0c674;">platformType</span><span style="color: #8abeb7;">){</span>
+    <span style="color: #81a2be;">Platform</span> <span style="color: #f0c674;">platform</span> = map.get<span style="color: #f0c674;">(</span>platformType<span style="color: #f0c674;">)</span>;
+    <span style="color: #b5bd68;">if</span><span style="color: #f0c674;">(</span>platform==<span style="color: #81a2be;">null</span><span style="color: #f0c674;">){</span>
+      <span style="color: #b5bd68;">switch</span><span style="color: #b5bd68;">(</span>platformType<span style="color: #b5bd68;">){</span>
+      <span style="color: #b5bd68;">case</span> <span style="color: #8abeb7;">"C"</span> : platform = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">CPlatform</span><span style="color: #81a2be;">()</span>;
+        <span style="color: #b5bd68;">break</span>;
+      <span style="color: #b5bd68;">case</span> <span style="color: #8abeb7;">"CPP"</span> : platform = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">CPPPlatform</span><span style="color: #81a2be;">()</span>;
+        <span style="color: #b5bd68;">break</span>;
+      <span style="color: #b5bd68;">case</span> <span style="color: #8abeb7;">"JAVA"</span> : platform = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">JavaPlatform</span><span style="color: #81a2be;">()</span>;
+        <span style="color: #b5bd68;">break</span>;
+      <span style="color: #b5bd68;">case</span> <span style="color: #8abeb7;">"RUBY"</span> : platform = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">RubyPlatform</span><span style="color: #81a2be;">()</span>;
+        <span style="color: #b5bd68;">break</span>;
+      <span style="color: #b5bd68;">}</span>
+      map.put<span style="color: #b5bd68;">(</span>platformType, platform<span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span>
+    <span style="color: #b5bd68;">return</span> platform;
+  <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+<p>
+注意Map本身是不同步的，所以 getPlatforminstance就一定要同步，否则影响对象创建。
+使用方法如下。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">TestFlyweight</span> <span style="color: #c5c8c6;">{</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">static</span> <span style="color: #81a2be;">void</span> <span style="color: #de935f;">main</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">String</span><span style="color: #f0c674;">[]</span> <span style="color: #f0c674;">args</span><span style="color: #8abeb7;">)</span> <span style="color: #8abeb7;">{</span>
+    <span style="color: #81a2be;">Code</span> <span style="color: #f0c674;">code</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Code</span><span style="color: #f0c674;">()</span>;
+    code.setCode<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"C Code..."</span><span style="color: #f0c674;">)</span>;
+    <span style="color: #81a2be;">Platform</span> <span style="color: #f0c674;">platform</span> = PlatformFactory.getPlatformInstance<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"C"</span><span style="color: #f0c674;">)</span>;
+    platform.execute<span style="color: #f0c674;">(</span>code<span style="color: #f0c674;">)</span>;
+    System.out.println<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"*************************"</span><span style="color: #f0c674;">)</span>;
+    code = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Code</span><span style="color: #f0c674;">()</span>;
+    code.setCode<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"C Code2..."</span><span style="color: #f0c674;">)</span>;
+    platform = PlatformFactory.getPlatformInstance<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"C"</span><span style="color: #f0c674;">)</span>;
+    platform.execute<span style="color: #f0c674;">(</span>code<span style="color: #f0c674;">)</span>;
+    System.out.println<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"*************************"</span><span style="color: #f0c674;">)</span>;
+    code = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Code</span><span style="color: #f0c674;">()</span>;
+    code.setCode<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"JAVA Code..."</span><span style="color: #f0c674;">)</span>;
+    platform = PlatformFactory.getPlatformInstance<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"JAVA"</span><span style="color: #f0c674;">)</span>;
+    platform.execute<span style="color: #f0c674;">(</span>code<span style="color: #f0c674;">)</span>;
+
+    System.out.println<span style="color: #f0c674;">(</span><span style="color: #8abeb7;">"*************************"</span><span style="color: #f0c674;">)</span>;
+  <span style="color: #8abeb7;">}</span><span style="color: #c5c8c6;">}</span>
+
+
+</pre>
+</div>
+
+<p>
+对就UML图， Platform 就相当于Flyweight接口。 JavaPlatform相当于ConcreteFlyweight.
+而excute方法就是operation方法 。
+</p>
+</div>
+</div>
+</div>
 
 <div id="outline-container-org0e822f8" class="outline-2">
 <h2 id="org0e822f8"><span class="section-number-2">3</span> Creational Patterns</h2>
@@ -636,19 +794,19 @@ Facade模式可以用于，封闭复杂子系统， 或者分层系统，
 懒汉式
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #718c00;">class</span> <span style="color: #4271ae;">Singleton</span>
-<span style="color: #4d4d4c;">{</span>
-  <span style="color: #718c00;">private</span> <span style="color: #718c00;">static</span> <span style="color: #4271ae;">Singleton</span> <span style="color: #eab700;">instance</span> = <span style="color: #718c00;">new</span> <span style="color: #4271ae;">Singleton</span><span style="color: #3e999f;">()</span>;
-  <span style="color: #718c00;">private</span> <span style="color: #f5871f;">Singleton</span><span style="color: #3e999f;">()</span>
-  <span style="color: #3e999f;">{</span>
-    <span style="color: #8e908c; font-style: italic;">//</span>
-  <span style="color: #3e999f;">}</span>
+<pre class="src src-java"><span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Singleton</span>
+<span style="color: #c5c8c6;">{</span>
+  <span style="color: #b5bd68;">private</span> <span style="color: #b5bd68;">static</span> <span style="color: #81a2be;">Singleton</span> <span style="color: #f0c674;">instance</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Singleton</span><span style="color: #8abeb7;">()</span>;
+  <span style="color: #b5bd68;">private</span> <span style="color: #de935f;">Singleton</span><span style="color: #8abeb7;">()</span>
+  <span style="color: #8abeb7;">{</span>
+    <span style="color: #969896; font-style: italic;">//</span>
+  <span style="color: #8abeb7;">}</span>
 
-  <span style="color: #718c00;">public</span> <span style="color: #718c00;">static</span> <span style="color: #4271ae;">Singleton</span> <span style="color: #f5871f;">getInstance</span><span style="color: #3e999f;">()</span>
-  <span style="color: #3e999f;">{</span>
-    <span style="color: #718c00;">return</span> instance;
-  <span style="color: #3e999f;">}</span>
-<span style="color: #4d4d4c;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">static</span> <span style="color: #81a2be;">Singleton</span> <span style="color: #de935f;">getInstance</span><span style="color: #8abeb7;">()</span>
+  <span style="color: #8abeb7;">{</span>
+    <span style="color: #b5bd68;">return</span> instance;
+  <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
 </pre>
 </div>
 
@@ -663,30 +821,34 @@ Facade模式可以用于，封闭复杂子系统， 或者分层系统，
 
 <div class="org-src-container">
 <pre class="src src-java">
-<span style="color: #718c00;">public</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">Singleton</span>
-<span style="color: #4d4d4c;">{</span>
-  <span style="color: #8e908c; font-style: italic;">// </span><span style="color: #8e908c; font-style: italic;">Private constructor prevents instantiation from other classes</span>
-  <span style="color: #718c00;">private</span> <span style="color: #f5871f;">Singleton</span><span style="color: #3e999f;">(){}</span>
+<span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">Singleton</span>
+<span style="color: #c5c8c6;">{</span>
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">Private constructor prevents instantiation from other classes</span>
+  <span style="color: #b5bd68;">private</span> <span style="color: #de935f;">Singleton</span><span style="color: #8abeb7;">(){}</span>
 
-  <span style="color: #8959a8;">/**</span>
-<span style="color: #8959a8;">  * SingletonHolder is loaded on the first execution of Singleton.getInstance()</span>
-<span style="color: #8959a8;">  * or the first access to SingletonHolder.INSTANCE, not before.</span>
-<span style="color: #8959a8;">  */</span>
-  <span style="color: #718c00;">private</span> <span style="color: #718c00;">final</span> <span style="color: #718c00;">static</span> <span style="color: #718c00;">class</span> <span style="color: #4271ae;">SingletonHolder</span>
-  <span style="color: #3e999f;">{</span>
-      <span style="color: #718c00;">private</span> <span style="color: #718c00;">final</span> <span style="color: #718c00;">static</span> <span style="color: #4271ae;">Singleton</span> <span style="color: #eab700;">instance</span> = <span style="color: #718c00;">new</span> <span style="color: #4271ae;">Singleton</span><span style="color: #eab700;">()</span>;
-  <span style="color: #3e999f;">}</span>
+  <span style="color: #b294bb;">/**</span>
+<span style="color: #b294bb;">  * SingletonHolder is loaded on the first execution of Singleton.getInstance()</span>
+<span style="color: #b294bb;">  * or the first access to SingletonHolder.INSTANCE, not before.</span>
+<span style="color: #b294bb;">  */</span>
+  <span style="color: #b5bd68;">private</span> <span style="color: #b5bd68;">final</span> <span style="color: #b5bd68;">static</span> <span style="color: #b5bd68;">class</span> <span style="color: #81a2be;">SingletonHolder</span>
+  <span style="color: #8abeb7;">{</span>
+      <span style="color: #b5bd68;">private</span> <span style="color: #b5bd68;">final</span> <span style="color: #b5bd68;">static</span> <span style="color: #81a2be;">Singleton</span> <span style="color: #f0c674;">instance</span> = <span style="color: #b5bd68;">new</span> <span style="color: #81a2be;">Singleton</span><span style="color: #f0c674;">()</span>;
+  <span style="color: #8abeb7;">}</span>
 
-  <span style="color: #718c00;">public</span> <span style="color: #718c00;">static</span> <span style="color: #4271ae;">Singleton</span> <span style="color: #f5871f;">getInstance</span><span style="color: #3e999f;">()</span>
-  <span style="color: #3e999f;">{</span>
-      <span style="color: #718c00;">return</span> SingletonHolder.instance;
-  <span style="color: #3e999f;">}</span>
-<span style="color: #4d4d4c;">}</span>
+  <span style="color: #b5bd68;">public</span> <span style="color: #b5bd68;">static</span> <span style="color: #81a2be;">Singleton</span> <span style="color: #de935f;">getInstance</span><span style="color: #8abeb7;">()</span>
+  <span style="color: #8abeb7;">{</span>
+      <span style="color: #b5bd68;">return</span> SingletonHolder.instance;
+  <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
+
+
+
+
 
 
 
@@ -773,7 +935,7 @@ observable.addObserver observable.deleteObserver 管理观察者数组
 <div id="postamble" class="status">
 <p class="date">Date: 2019-02-02 六 00:00</p>
 <p class="author">Author: Sunkehui</p>
-<p class="date">Created: 2019-02-14 四 15:11</p>
+<p class="date">Created: 2019-02-20 三 11:25</p>
 <p class="validation"></p>
 </div>
 </body>
