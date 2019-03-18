@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-02-21 四 16:44 -->
+<!-- 2019-03-18 一 10:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>org tutorial</title>
@@ -366,7 +366,11 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#org05b33ae">8. publish</a></li>
 <li><a href="#org4ed5fb6">9. Bebal</a></li>
-<li><a href="#org296ead0">10. plantuml</a></li>
+<li><a href="#org296ead0">10. plantuml</a>
+<ul>
+<li><a href="#org0d41471">10.1. usage</a></li>
+</ul>
+</li>
 <li><a href="#orgd21ce9b">11. ref</a></li>
 </ul>
 </div>
@@ -838,6 +842,13 @@ the radius of Alpha Centauri is R_{Alpha Centauri} = 1.28 x R_{sun}.
 The radius of the sun is R<sub>sun</sub> = 6.96 x 10<sup>8</sup> m.  On the other hand,
 the radius of Alpha Centauri is R<sub>Alpha Centauri</sub> = 1.28 x R<sub>sun</sub>.
 </p>
+
+<pre class="example">
+#+OPTIONS: ^:nil
+</pre>
+<p>
+可以取消这种解析。
+</p>
 </div>
 </div>
 
@@ -945,9 +956,9 @@ org-preview-latex-default-process 变量设置了图片转换工具,它可能是
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #4d4d4c;">(</span><span style="color: #718c00;">defun</span> <span style="color: #f5871f;">org-xor</span> <span style="color: #3e999f;">(</span>a b<span style="color: #3e999f;">)</span>
-  <span style="color: #8959a8;">"Exclusive or."</span>
-  <span style="color: #3e999f;">(</span><span style="color: #718c00;">if</span> a <span style="color: #eab700;">(</span>not b<span style="color: #eab700;">)</span> b<span style="color: #3e999f;">)</span><span style="color: #4d4d4c;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #ffffff;">(</span><span style="color: #d1f1a9;">defun</span> <span style="color: #ffc58f;">org-xor</span> <span style="color: #99ffff;">(</span>a b<span style="color: #99ffff;">)</span>
+  <span style="color: #ebbbff;">"Exclusive or."</span>
+  <span style="color: #99ffff;">(</span><span style="color: #d1f1a9;">if</span> a <span style="color: #ffeead;">(</span>not b<span style="color: #ffeead;">)</span> b<span style="color: #99ffff;">)</span><span style="color: #ffffff;">)</span>
 </pre>
 </div>
 <p>
@@ -958,14 +969,14 @@ org-preview-latex-default-process 变量设置了图片转换工具,它可能是
 可以给代码显示行号
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="linenr">20: </span><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">This exports with line number 20.</span>
-<span class="linenr">21: </span><span style="color: #4d4d4c;">(</span>message <span style="color: #3e999f;">"This is line 21"</span><span style="color: #4d4d4c;">)</span>
+<pre class="src src-emacs-lisp"><span class="linenr">20: </span><span style="color: #7285b7; font-style: italic;">;; </span><span style="color: #7285b7; font-style: italic;">This exports with line number 20.</span>
+<span class="linenr">21: </span><span style="color: #ffffff;">(</span>message <span style="color: #99ffff;">"This is line 21"</span><span style="color: #ffffff;">)</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="linenr">31: </span><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">This is listed as line 31.</span>
-<span class="linenr">32: </span><span style="color: #4d4d4c;">(</span>message <span style="color: #3e999f;">"This is line 32"</span><span style="color: #4d4d4c;">)</span>
+<pre class="src src-emacs-lisp"><span class="linenr">31: </span><span style="color: #7285b7; font-style: italic;">;; </span><span style="color: #7285b7; font-style: italic;">This is listed as line 31.</span>
+<span class="linenr">32: </span><span style="color: #ffffff;">(</span>message <span style="color: #99ffff;">"This is line 32"</span><span style="color: #ffffff;">)</span>
 </pre>
 </div>
 </div>
@@ -1055,7 +1066,7 @@ header argument 以 :argname value 这样报的形式出现，可以有多个。
 </table>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="orgd9e211d"><span style="color: #4d4d4c;">(</span>length table<span style="color: #4d4d4c;">)</span>
+<pre class="src src-emacs-lisp" id="orgd9e211d"><span style="color: #ffffff;">(</span>length table<span style="color: #ffffff;">)</span>
 </pre>
 </div>
 
@@ -1071,26 +1082,26 @@ org 2.0以后的版本有org-insert-structure-template 函数， 你也可以使
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
-<span style="color: #4d4d4c;">(</span><span style="color: #718c00;">defun</span> <span style="color: #f5871f;">org-insert-source-block</span> <span style="color: #3e999f;">(</span>name language switches header<span style="color: #3e999f;">)</span>
-  <span style="color: #8959a8;">"Asks name, language, switches, header.</span>
-<span style="color: #8959a8;">Inserts org-mode source code snippet"</span>
-  <span style="color: #3e999f;">(</span><span style="color: #718c00;">interactive</span> <span style="color: #3e999f;">"sname?</span>
-<span style="color: #3e999f;">slanguage?</span>
-<span style="color: #3e999f;">sswitches?</span>
-<span style="color: #3e999f;">sheader? "</span><span style="color: #3e999f;">)</span>
-  <span style="color: #3e999f;">(</span>insert
-   <span style="color: #eab700;">(</span><span style="color: #718c00;">if</span> <span style="color: #718c00;">(</span>string= name <span style="color: #3e999f;">""</span><span style="color: #718c00;">)</span>
-       <span style="color: #3e999f;">""</span>
-     <span style="color: #718c00;">(</span>concat <span style="color: #3e999f;">"#+NAME: "</span> name<span style="color: #718c00;">)</span> <span style="color: #eab700;">)</span>
-   <span style="color: #eab700;">(</span>format <span style="color: #3e999f;">"</span>
-<span style="color: #3e999f;">#+BEGIN_SRC %s %s %s</span>
+<span style="color: #ffffff;">(</span><span style="color: #d1f1a9;">defun</span> <span style="color: #ffc58f;">org-insert-source-block</span> <span style="color: #99ffff;">(</span>name language switches header<span style="color: #99ffff;">)</span>
+  <span style="color: #ebbbff;">"Asks name, language, switches, header.</span>
+<span style="color: #ebbbff;">Inserts org-mode source code snippet"</span>
+  <span style="color: #99ffff;">(</span><span style="color: #d1f1a9;">interactive</span> <span style="color: #99ffff;">"sname?</span>
+<span style="color: #99ffff;">slanguage?</span>
+<span style="color: #99ffff;">sswitches?</span>
+<span style="color: #99ffff;">sheader? "</span><span style="color: #99ffff;">)</span>
+  <span style="color: #99ffff;">(</span>insert
+   <span style="color: #ffeead;">(</span><span style="color: #d1f1a9;">if</span> <span style="color: #d1f1a9;">(</span>string= name <span style="color: #99ffff;">""</span><span style="color: #d1f1a9;">)</span>
+       <span style="color: #99ffff;">""</span>
+     <span style="color: #d1f1a9;">(</span>concat <span style="color: #99ffff;">"#+NAME: "</span> name<span style="color: #d1f1a9;">)</span> <span style="color: #ffeead;">)</span>
+   <span style="color: #ffeead;">(</span>format <span style="color: #99ffff;">"</span>
+<span style="color: #99ffff;">#+BEGIN_SRC %s %s %s</span>
 
-<span style="color: #3e999f;">#+END_SRC"</span> language switches header
-<span style="color: #eab700;">)</span>
-   <span style="color: #3e999f;">)</span>
-  <span style="color: #3e999f;">(</span>forward-line -1<span style="color: #3e999f;">)</span>
-  <span style="color: #3e999f;">(</span>goto-char <span style="color: #eab700;">(</span>line-end-position<span style="color: #eab700;">)</span><span style="color: #3e999f;">)</span>
-  <span style="color: #4d4d4c;">)</span>
+<span style="color: #99ffff;">#+END_SRC"</span> language switches header
+<span style="color: #ffeead;">)</span>
+   <span style="color: #99ffff;">)</span>
+  <span style="color: #99ffff;">(</span>forward-line -1<span style="color: #99ffff;">)</span>
+  <span style="color: #99ffff;">(</span>goto-char <span style="color: #ffeead;">(</span>line-end-position<span style="color: #ffeead;">)</span><span style="color: #99ffff;">)</span>
+  <span style="color: #ffffff;">)</span>
 
 </pre>
 </div>
@@ -1571,14 +1582,14 @@ org-purlish-project 使用的org-html-publish-to-html就不好使。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">active Org-babel languages</span>
-<span style="color: #4d4d4c;">(</span>org-babel-do-load-languages
- <span style="color: #718c00;">'</span><span style="color: #4271ae;">org-babel-load-languages</span>
- <span style="color: #718c00;">'</span><span style="color: #3e999f;">(</span><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">other Babel languages</span>
-   <span style="color: #eab700;">(</span>plantuml . t<span style="color: #eab700;">)</span><span style="color: #3e999f;">)</span><span style="color: #4d4d4c;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #7285b7; font-style: italic;">;; </span><span style="color: #7285b7; font-style: italic;">active Org-babel languages</span>
+<span style="color: #ffffff;">(</span>org-babel-do-load-languages
+ <span style="color: #d1f1a9;">'</span><span style="color: #bbdaff;">org-babel-load-languages</span>
+ <span style="color: #d1f1a9;">'</span><span style="color: #99ffff;">(</span><span style="color: #7285b7; font-style: italic;">;; </span><span style="color: #7285b7; font-style: italic;">other Babel languages</span>
+   <span style="color: #ffeead;">(</span>plantuml . t<span style="color: #ffeead;">)</span><span style="color: #99ffff;">)</span><span style="color: #ffffff;">)</span>
 
-<span style="color: #4d4d4c;">(</span><span style="color: #718c00;">setq</span> org-plantuml-jar-path
-      <span style="color: #3e999f;">(</span>expand-file-name <span style="color: #3e999f;">"~/src/org/contrib/scripts/plantuml.jar"</span><span style="color: #3e999f;">)</span><span style="color: #4d4d4c;">)</span>
+<span style="color: #ffffff;">(</span><span style="color: #d1f1a9;">setq</span> org-plantuml-jar-path
+      <span style="color: #99ffff;">(</span>expand-file-name <span style="color: #99ffff;">"~/src/org/contrib/scripts/plantuml.jar"</span><span style="color: #99ffff;">)</span><span style="color: #ffffff;">)</span>
 </pre>
 </div>
 
@@ -1598,9 +1609,61 @@ org-purlish-project 使用的org-html-publish-to-html就不好使。
 </p>
 </div>
 </div>
+
+<div id="outline-container-org0d41471" class="outline-3">
+<h3 id="org0d41471"><span class="section-number-3">10.1</span> usage</h3>
+<div class="outline-text-3" id="text-10-1">
+<pre class="example">
+// class define
+interface Interface1{
+}
+class ClassA{
+op()
+}
+class ClassB{
+}
+// line
+
+// generilize
+ClassA &lt;-- ClassB
+// realize
+Interface1 &lt;|.. ClassA
+// 聚合
+ClassA o-- ClassB
+// 组合
+ClassA *-- ClassB
+
+
+
+// user case
+
+// 用例圆
+(First usecase)
+(Another usecase) as (UC2)
+usecase UC3
+usecase (Last\nusecase) as UC4
+
+// 用例图添加描述
+usecase UC1 as "You can use
+several lines to define your usecase.
+You can also use separators.
+--
+Several separators are possible.
+==
+And you can add titles:
+..Conclusion..
+This allows large description."
+
+actor
+:actor1: as actora
+
+//线和描述
+:Main Admin: ---&gt; (Use the application) : This is\nyet another\nlabel
+
+</pre>
 </div>
-
-
+</div>
+</div>
 
 
 
@@ -1629,7 +1692,7 @@ The link is: <a href="https://orgmode.org">https://orgmode.org</a>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-02-02 六 00:00</p>
 <p class="author">Author: Sunkehui</p>
-<p class="date">Created: 2019-02-21 四 16:44</p>
+<p class="date">Created: 2019-03-18 一 10:45</p>
 <p class="validation"></p>
 </div>
 </body>
